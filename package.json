@@ -1,0 +1,23 @@
+{
+  "name": "hk-job-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm install && npm run web:start",
+    "web:start": "cd frontend && npm install && npm start",
+    "server:start": "cd backend && npm install && npm run dev",
+    "server:install": "cd backend && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/efadhemon/hk-job-task.git"
+  },
+  "author": "Emon Hossain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/efadhemon/hk-job-task/issues"
+  },
+  "homepage": "https://github.com/efadhemon/hk-job-task#readme"
+}
