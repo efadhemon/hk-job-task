@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm install && npm run web:start",
-    "web:start": "cd frontend && npm install && npm start",
-    "server:start": "cd backend && npm install && npm run dev",
-    "server:install": "cd backend && npm install"
+    "start": "yarn install && yarn run web:start",
+    "web:start": "cd frontend && yarn install && yarn start",
+    "server:start": "cd backend && yarn install && yarn run dev",
+    "server:install": "cd backend && yarn install"
   },
   "repository": {
     "type": "git",
