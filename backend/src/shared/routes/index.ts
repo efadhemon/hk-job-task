@@ -11,8 +11,8 @@ indexRouter.get("/", (req: Request, res: Response) => {
 });
 
 indexRouter.use("/auth", authRouter);
-indexRouter.use("/user", userRouter);
-indexRouter.use("/sector", sectorRouter);
-indexRouter.use("/distribution", distributionRouter);
+indexRouter.use("/users", userRouter);
+indexRouter.use("/sectors", sectorRouter);
+indexRouter.use("/distributions", distributionRouter);
 
 export default indexRouter;
