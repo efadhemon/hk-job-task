@@ -61,7 +61,15 @@ const DistributionForm: React.FC<IFProps> = ({
               },
             ]}
           >
-            <Select mode="multiple" placeholder="Select Sectors">
+            <Select
+              mode="multiple"
+              placeholder="Select Sectors"
+              showSearch
+              allowClear
+              filterOption={(input, option: any) =>
+                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+              }
+            >
               {sectors?.map((sector: ISector) => (
                 <Select.Option key={sector._id} value={sector._id}>
                   {sector.title}
