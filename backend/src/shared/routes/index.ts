@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import authRouter from "./auth.routes";
+import distributionRouter from "./distribution.routes";
 import sectorRouter from "./sector.routes";
 import userRouter from "./user.routes";
 
@@ -12,5 +13,6 @@ indexRouter.get("/", (req: Request, res: Response) => {
 indexRouter.use("/auth", authRouter);
 indexRouter.use("/user", userRouter);
 indexRouter.use("/sector", sectorRouter);
+indexRouter.use("/distribution", distributionRouter);
 
 export default indexRouter;

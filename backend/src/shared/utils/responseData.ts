@@ -4,15 +4,13 @@ export const responseData = (data: any, req: Request) => {
   const page: any = req.query.page;
   const limit: any = req.query.limit;
   const method = req.method;
-  let path = req.baseUrl.slice(8);
-  path = path.charAt(0).toUpperCase() + path.slice(1);
 
   if (page && limit) {
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
     return {
       success: true,
-      message: path + " " + messageHandler(method),
+      message: messageHandler(method),
       total: data.length,
       payload: data.slice(startIndex, endIndex),
       page: page,
@@ -21,7 +19,7 @@ export const responseData = (data: any, req: Request) => {
   } else {
     return {
       success: true,
-      message: path + " " + messageHandler(method),
+      message: messageHandler(method),
       total: Array.isArray(data) ? data.length : 1,
       payload: data,
     };
@@ -31,20 +29,20 @@ export const responseData = (data: any, req: Request) => {
 const messageHandler = (method: any) => {
   switch (method.toLowerCase()) {
     case "get":
-      return "successfully get";
+      return "Successfully get";
       break;
     case "post":
-      return "created successfully";
+      return "Created successfully";
       break;
     case "put":
     case "patch":
-      return "updated successfully";
+      return "Updated successfully";
       break;
     case "delete":
-      return "deleted successfully";
+      return "Deleted successfully";
       break;
 
     default:
-      return "operations successful";
+      return "Operations successful";
   }
 };
