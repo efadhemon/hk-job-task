@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import authRouter from "./auth.routes";
+import sectorRouter from "./sector.routes";
 import userRouter from "./user.routes";
 
 const indexRouter = express.Router();
@@ -10,5 +11,6 @@ indexRouter.get("/", (req: Request, res: Response) => {
 
 indexRouter.use("/auth", authRouter);
 indexRouter.use("/user", userRouter);
+indexRouter.use("/sector", sectorRouter);
 
 export default indexRouter;
