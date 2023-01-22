@@ -6,10 +6,10 @@ const distributionService = {
     return Distribution.create(distribution);
   },
   get: async () => {
-    return Distribution.find({}).populate(["user", "sector"]);
+    return Distribution.find({}).populate(["sectors"]);
   },
   getById: async (id: string) => {
-    return Distribution.findById(id).populate(["user", "sector"]);
+    return Distribution.findById(id).populate(["sectors"]);
   },
   updateById: async (id: string, data: any) => {
     return Distribution.findByIdAndUpdate(id, data, { new: true });

@@ -6,7 +6,7 @@ const distributionRouter = express.Router();
 distributionRouter.post("/", distributionController.create);
 distributionRouter.get("/", distributionController.get);
 distributionRouter.get("/:id", distributionController.getById);
-distributionRouter.put("/:id", distributionController.updateById);
+distributionRouter.patch("/:id", distributionController.updateById);
 distributionRouter.delete("/:id", distributionController.deleteById);
 
 export default distributionRouter;

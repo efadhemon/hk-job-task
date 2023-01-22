@@ -9,17 +9,14 @@ const distributionSchema = new Schema(
       type: String,
       required: false,
     },
-    user: {
-      type: mongoose.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
-    sector: {
-      type: mongoose.Types.ObjectId,
-      ref: "Sector",
-      required: true,
-    },
-    termsCondition: {
+    sectors: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Sector",
+        required: true,
+      },
+    ],
+    agreeToTerms: {
       type: Boolean,
       required: true,
     },

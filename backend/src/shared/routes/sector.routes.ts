@@ -7,7 +7,7 @@ const sectorRouter = express.Router();
 sectorRouter.post("/", sectorController.create);
 sectorRouter.get("/", sectorController.get);
 sectorRouter.get("/:id", sectorController.getById);
-sectorRouter.put("/:id", sectorController.updateById);
+sectorRouter.patch("/:id", sectorController.updateById);
 sectorRouter.delete("/:id", sectorController.deleteById);
 
 export default sectorRouter;
