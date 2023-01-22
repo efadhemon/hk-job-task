@@ -1,0 +1,124 @@
+@import './themes/index.scss';
+@import './vendors/tailwind.css';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ul.auth-links {
+  width: 150px;
+  li {
+    font-size: 16px;
+    a {
+      display: flex;
+      align-items: center;
+      color: #222222;
+      padding: 5px 10px;
+      transition: 0.3s;
+      &:hover {
+        background-color: #fff6ee;
+      }
+      svg {
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+.uploaded-image-view {
+  width: 104px;
+  height: 104px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  text-align: center;
+  vertical-align: top;
+  background-color: #fafafa;
+  border: 1px dashed #d9d9d9;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.image-preview {
+  position: relative;
+  height: 60px;
+  width: 60px;
+  background: #f2f3f5;
+  border-radius: 5px;
+  overflow: hidden;
+  &:hover {
+    .view-handler {
+      opacity: 1;
+    }
+  }
+  img {
+    height: 100%;
+    width: 100%;
+  }
+  .view-handler {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00000080;
+    color: #fff;
+    opacity: 0;
+    transition: 0.3s;
+    svg {
+      font-size: 24px;
+      cursor: pointer;
+    }
+  }
+}
+
+.uploaded-image-view {
+  .image-preview {
+    height: 104px;
+    width: 104px;
+    border-radius: 0;
+  }
+}
+
+.order-status {
+  background-color: #00ac26;
+  color: #ffffff;
+  padding: 5px 20px;
+  border-radius: 5px;
+
+  &.PLACED {
+    background-color: #ffa500;
+  }
+  &.PENDING {
+    background-color: #ffa500;
+  }
+  &.CONFIRMED {
+    background-color: #2cadd6;
+  }
+  &.ACCEPTED {
+    background-color: #2cadd6;
+  }
+  &.COMPLETED {
+    background-color: #00ac26;
+  }
+  &.CANCELED {
+    background-color: #d62c2c;
+  }
+  &.REJECTED {
+    background-color: #d62c2c;
+  }
+}
