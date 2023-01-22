@@ -1,18 +1,15 @@
 import { useCreateSector, useSectors } from "@shared/hooks";
 import { Button, Modal, notification, PageHeader } from "antd";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import SectorList from "../components/SectorList";
 import { _ } from "@shared/utils";
-import { Paths } from "@shared/constant";
 import { useState } from "react";
-import SectorCreateForm from "../components/SectorCreateForm";
+import SectorForm from "../components/SectorForm";
 import { AxiosResponse } from "axios";
 import { SectorService } from "@shared/services";
 import { queryClient } from "@shared/config";
 
 const SectorListRoute = () => {
-  const navigate = useNavigate();
-
   const [isModalOpen, setModalOpen] = useState<boolean>();
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -46,12 +43,7 @@ const SectorListRoute = () => {
       <PageHeader
         title="Sector List"
         extra={[
-          <Button
-            key={1}
-            type="primary"
-            // onClick={() => navigate(Paths.sectorCreate)}
-            onClick={() => setModalOpen(true)}
-          >
+          <Button key={1} type="primary" onClick={() => setModalOpen(true)}>
             Create
           </Button>,
         ]}
@@ -69,15 +61,15 @@ const SectorListRoute = () => {
         />
       </PageHeader>
       <Modal
-        width={600}
+        width={500}
         title="Add Sector"
         open={isModalOpen}
         footer={false}
         onCancel={() => setModalOpen(false)}
       >
-        <SectorCreateForm
-          onFinish={(values) => createSector.mutateAsync(values)}
+        <SectorForm
           isLoading={createSector.isLoading}
+          onFinish={(values) => createSector.mutateAsync(values)}
         />
       </Modal>
     </>

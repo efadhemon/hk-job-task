@@ -1,10 +1,7 @@
-import ProtectedRoutes from "./ProtectedRoutes";
-import PublicRoutes from "./PublicRoutes";
+import Routes from "./routes.component";
 
 const AppRoutes = () => {
-  const isAuthenticated = true;
-
-  return isAuthenticated ? <ProtectedRoutes /> : <PublicRoutes />;
+  return <Routes />;
 };
 
 export default AppRoutes;

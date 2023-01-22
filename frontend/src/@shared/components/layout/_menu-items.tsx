@@ -34,20 +34,15 @@ const welcomeMenu: MenuProps["items"] = [
 // main menu items
 const mainMenu: MenuProps["items"] = [
   {
-    key: Paths.userList,
+    key: Paths.sectors,
     icon: <MdOutlineFace />,
-    label: <Link to={_.appendPagination(Paths.userList)}>Users</Link>,
+    label: <Link to={_.appendPagination(Paths.sectors)}>Sectors</Link>,
   },
   {
-    key: Paths.sectorList,
-    icon: <MdOutlineFace />,
-    label: <Link to={_.appendPagination(Paths.sectorList)}>Sectors</Link>,
-  },
-  {
-    key: Paths.distributionList,
+    key: Paths.distributions,
     icon: <MdOutlineFace />,
     label: (
-      <Link to={_.appendPagination(Paths.distributionList)}>Distributions</Link>
+      <Link to={_.appendPagination(Paths.distributions)}>Distributions</Link>
     ),
   },
 ];

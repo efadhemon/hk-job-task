@@ -1,16 +1,26 @@
 import { queryClient } from "@shared/config";
-import { useCreateDistribution } from "@shared/hooks";
+import { useCreateDistribution, useDistributions } from "@shared/hooks";
 import { DistributionService } from "@shared/services";
+import { _ } from "@shared/utils";
 import { Button, notification, PageHeader } from "antd";
 import Modal from "antd/lib/modal/Modal";
 import { AxiosResponse } from "axios";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import DistributionForm from "../components/DistributionForm";
 import DistributionList from "../components/DistributionList";
 
 const DistributionListRoute = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { data, isLoading } = useDistributions({
+    options: {
+      page: parseInt(searchParams.get("page")) || 1,
+      limit: parseInt(searchParams.get("limit")) || 10,
+    },
+  });
 
   const distributeFood = useCreateDistribution({
     config: {
@@ -40,7 +50,17 @@ const DistributionListRoute = () => {
           </Button>,
         ]}
       >
-        <DistributionList />
+        <DistributionList
+          data={data?.data?.payload}
+          isLoading={isLoading}
+          pagination={{
+            total: data?.data?.total,
+            current: parseInt(searchParams.get("page")) || 1,
+            pageSize: parseInt(searchParams.get("limit")) || 10,
+            onChange: (page, limit) =>
+              setSearchParams(_.toCleanObject({ page, limit })),
+          }}
+        />
       </PageHeader>
 
       <Modal

@@ -7,7 +7,7 @@ import {
 import { CoreAxiosInstance } from "@shared/config";
 import { _ } from "@shared/utils";
 
-const END_POINT: string = "/Distributions";
+const END_POINT: string = "/distributions";
 
 export const DistributionService = {
   NAME: END_POINT,
@@ -21,9 +21,9 @@ export const DistributionService = {
     return CoreAxiosInstance.get(`${END_POINT}/${id}`);
   },
   update(payload: IDistributionUpdate) {
-    const { id } = payload;
-    delete payload.id;
-    return CoreAxiosInstance.patch(`${END_POINT}/${id}`, payload);
+    const { _id } = payload;
+    delete payload._id;
+    return CoreAxiosInstance.patch(`${END_POINT}/${_id}`, payload);
   },
   delete(id: string) {
     return CoreAxiosInstance.delete(`${END_POINT}/${id}`);

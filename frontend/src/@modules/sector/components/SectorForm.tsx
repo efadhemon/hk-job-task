@@ -1,15 +1,13 @@
 import { ISectorCreate } from "@shared/interfaces";
-import { Button, Col, Form, Input, Radio, Row, Select } from "antd";
+import { Button, Col, Form, Input, Row } from "antd";
 import { useEffect } from "react";
-const { Option } = Select;
 
 interface IProps {
   initialValues?: ISectorCreate;
   onFinish?: (values: ISectorCreate) => void;
   isLoading?: boolean;
 }
-
-const SectorCreateForm: React.FC<IProps> = ({
+const SectorForm: React.FC<IProps> = ({
   initialValues,
   onFinish,
   isLoading,
@@ -20,16 +18,21 @@ const SectorCreateForm: React.FC<IProps> = ({
     form.resetFields();
   }, [form, initialValues]);
 
+  const onFinishForm = (value: ISectorCreate) => {
+    onFinish(value);
+    form.resetFields();
+  };
+
   return (
     <Form
       size="large"
       layout="vertical"
       form={form}
       initialValues={initialValues}
-      onFinish={onFinish}
+      onFinish={onFinishForm}
     >
       <Row gutter={{ sm: 16, md: 20, lg: 30 }}>
-        <Col xs={24} sm={24} md={12}>
+        <Col xs={24}>
           <Form.Item
             label="Title"
             name="title"
@@ -41,19 +44,6 @@ const SectorCreateForm: React.FC<IProps> = ({
             ]}
           >
             <Input placeholder="Enter  a title" />
-          </Form.Item>
-        </Col>
-
-        <Col xs={24} sm={24} md={12}>
-          <Form.Item label="Is Active" name="isActive">
-            <Radio.Group buttonStyle="solid" className="w-full">
-              <Radio.Button className="w-1/2 text-center" value={true}>
-                True
-              </Radio.Button>
-              <Radio.Button className="w-1/2 text-center" value={false}>
-                False
-              </Radio.Button>
-            </Radio.Group>
           </Form.Item>
         </Col>
 
@@ -69,4 +59,4 @@ const SectorCreateForm: React.FC<IProps> = ({
   );
 };
 
-export default SectorCreateForm;
+export default SectorForm;
