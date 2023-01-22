@@ -7,9 +7,6 @@ const config = {
   server: {
     port: process.env.PORT || 5000,
   },
-  token: {
-    secret: process.env.TOKEN_SECRET || "gkfdvbklfbreriobrtbjrtjbtgdsg",
-  },
 };
 
 export default config;
