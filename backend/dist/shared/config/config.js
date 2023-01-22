@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv").config();
 var config = {
-    bd: {
+    db: {
         uri: process.env.DB_URI || "mongodb://localhost:5000/",
     },
     server: {

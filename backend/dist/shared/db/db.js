@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = __importDefault(require("mongoose"));
 var config_1 = __importDefault(require("../config/config"));
-var dbUrl = config_1.default.bd.uri;
+var dbUrl = config_1.default.db.uri;
 if (!dbUrl) {
     console.log("Mongo url is not set in env file or config.js", dbUrl);
     new Error("Mongo url is not set in env file or config.js");
