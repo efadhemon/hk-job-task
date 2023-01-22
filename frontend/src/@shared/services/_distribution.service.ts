@@ -15,7 +15,7 @@ export const DistributionService = {
     return CoreAxiosInstance.post(END_POINT, payload);
   },
   filter(options: IBaseFilter) {
-    return CoreAxiosInstance.get(`${END_POINT}?${_.queryNormalizer(options)}`);
+    return CoreAxiosInstance.get(`${END_POINT}?${_.toQueryString(options)}`);
   },
   filterById(id: string) {
     return CoreAxiosInstance.get(`${END_POINT}/${id}`);

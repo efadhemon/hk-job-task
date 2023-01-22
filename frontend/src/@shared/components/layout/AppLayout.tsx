@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Dropdown, Grid, Layout, Menu } from "antd";
+import { Grid, Layout, Menu } from "antd";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { IMAGES } from "@assets/images";
 import menuItems from "./_menu-items";
@@ -105,7 +105,7 @@ const AppLayout: React.FC<IFProps> = ({ children }) => {
           theme="dark"
           defaultSelectedKeys={[String(pathname)]}
           defaultOpenKeys={[String(pathname)]}
-          items={menuItems.mainMenu}
+          items={menuItems}
         />
       </Layout.Sider>
 
@@ -117,14 +117,6 @@ const AppLayout: React.FC<IFProps> = ({ children }) => {
           >
             {isCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
           </div>
-
-          <Dropdown.Button
-            overlay={
-              <Menu items={menuItems.welcomeMenu} style={{ width: 150 }} />
-            }
-          >
-            Welcome
-          </Dropdown.Button>
         </Layout.Header>
         <Layout.Content style={styles.content as any}>
           {children}
