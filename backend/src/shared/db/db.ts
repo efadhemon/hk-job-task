@@ -15,6 +15,7 @@ mongoose.connect(
     // useUnifiedTopology: true,
     // useFindAndModify: false,
     // useCreateIndex: true,
+    // strictQuery: false,
   },
   (error) => {
     if (error) {
