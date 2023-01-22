@@ -1,65 +1,48 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.messageHandler = exports.responseData = void 0;
-var responseData = function (_a) {
-    var req = _a.req, res = _a.res, data = _a.data, error = _a.error, status = _a.status;
+exports.responseData = void 0;
+var responseData = function (data, req) {
     var page = req.query.page;
-    var take = req.query.take;
+    var limit = req.query.limit;
     var method = req.method;
-    if (page && take && Array.isArray(data)) {
-        var startIndex = (page - 1) * take;
-        var endIndex = page * take;
-        return res.status(status || 200).json({
+    if (page && limit) {
+        var startIndex = (page - 1) * limit;
+        var endIndex = page * limit;
+        return {
             success: true,
-            message: (0, exports.messageHandler)(method),
+            message: messageHandler(method),
             total: data.length,
             payload: data.slice(startIndex, endIndex),
             page: page,
-            take: take,
-        });
-    }
-    else if (data) {
-        return res.status(status || 200).json({
-            success: true,
-            message: (0, exports.messageHandler)(method),
-            total: Array.isArray(data) ? data.length : 1,
-            payload: data,
-        });
-    }
-    else if (error) {
-        console.log(error);
-        return res.status(status || 401).json({
-            success: false,
-            message: error.message,
-            payload: null,
-        });
+            limit: limit,
+        };
     }
     else {
-        return res.status(status || 401).json({
-            success: false,
-            message: "No data",
-            payload: null,
-        });
+        return {
+            success: true,
+            message: messageHandler(method),
+            total: Array.isArray(data) ? data.length : 1,
+            payload: data,
+        };
     }
 };
 exports.responseData = responseData;
 var messageHandler = function (method) {
     switch (method.toLowerCase()) {
         case "get":
-            return "successfully get";
+            return "Successfully get";
             break;
         case "post":
-            return "created successfully";
+            return "Created successfully";
             break;
         case "put":
         case "patch":
-            return "updated successfully";
+            return "Updated successfully";
             break;
         case "delete":
-            return "deleted successfully";
+            return "Deleted successfully";
             break;
         default:
-            return "operations successful";
+            return "Operations successful";
     }
 };
-exports.messageHandler = messageHandler;

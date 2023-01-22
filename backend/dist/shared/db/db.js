@@ -15,6 +15,7 @@ mongoose_1.default.connect(dbUrl, {
 // useUnifiedTopology: true,
 // useFindAndModify: false,
 // useCreateIndex: true,
+// strictQuery: false,
 }, function (error) {
     if (error) {
         console.log("Filled to connect database. ".concat(error));
